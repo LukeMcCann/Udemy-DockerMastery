@@ -1,0 +1,20 @@
+# create your drupal and postgres config here, based off the last assignment
+version: '3.1'
+
+services:
+  drupal:
+    image: drupal:8-apache
+    ports:
+    - 8080:80
+    volumes:
+      - /var/www/html/modules
+      - /var/www/html/profiles
+      - /var/www/html/themes
+      - /var/www/html/sites
+    restart: always
+
+  postgres:
+    image: postgres:10
+    environment:
+      POSTGRES_PASSWORD: password
+    restart: always
