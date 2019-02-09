@@ -1,0 +1,29 @@
+Persistent Data
+
+key concepts with containers: Immutable, epemeral -> containers are naturall epemeral by design
+
+
+Containers are meant to be immutable and ephemeral : unchanging and temporary (disposable)
+
+the idea of this is that we can spin up containers to throw away and create new ones from an image quickly.
+
+This is the idea of an immutable infrastructure, where we don't change things once they are running
+if a config change or version update is required, we simply re-deploy a whole new container.
+
+This benefits reproducability and reliability but there is a tradeoff; separation of concerns
+
+Separation of concerns: ideally we don't want unique data such as database data or file outputs stored wihtin our
+containers binaries, Docker provides a big benefit to this.
+
+With Docker we are able to update our application by recreating a new container with an updated version of the app, and ideally the unique
+data is preserved while the container is recycled. 
+
+Unique data == Persistent Data
+
+Docker Volumes: create a special location outside of the containers union file system (UFS) and preserves it accross container
+removals, alowing us to attach whatever container we want.
+
+The container sees volumes as a local file path.
+
+Bind Mounts: link container path to host path; sharing or mounting host directory or file into a container
+Again bind mounts appear as a local file path

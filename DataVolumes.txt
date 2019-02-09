@@ -1,0 +1,15 @@
+Data Volumes
+
+The first place to tell a container that it needs to add a VOLUME is in the DockerFile (See MySQL Database example)
+
+
+VOLUME /var/lib/mysql 
+
+This line tells docker the default location of the MySQL databases. 
+The image will tell docker when a new container is created a new volume location is to be created and assigned to it.
+
+Volumes require manual deletion, removing a container does not remove the volume.
+
+On MacOS and Windows the location will not be visible on the host machine via the $PATH as it is on linux machines.
+This is due to the fact that to run on Windows and MAC there is more going on in the background; docker is creating a Linux VM 
+this is where the data is being stored.
